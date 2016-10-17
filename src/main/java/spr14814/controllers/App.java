@@ -15,10 +15,23 @@ public class App {
     }
 }
 
+class Foo{
+    private String name;
+
+    Foo(String name) {
+        this.name = name;
+    }
+}
+
 @RestController
 class FoosController {
     @GetMapping("/foo")
-    public String getFoo(){
+    public Foo getFoo(){
+        return new Foo("foo");
+    }
+
+    @GetMapping("/foos")
+    public String getFoos(){
         throw new FooNotFoundException();
     }
 
